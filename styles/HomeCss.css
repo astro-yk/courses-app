@@ -1,0 +1,100 @@
+/* styles/Home.module.css */
+
+.container {
+    padding: 0 20px;
+    min-height: 100vh;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navLink {
+    font-size: 1rem;
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .main {
+    padding: 40px 0;
+  }
+  
+  .hero {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+  
+  .heroButton {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  .coursesSection {
+    text-align: center;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .coursesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .courseCard {
+    padding: 20px;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    background-color: #444;
+  }
+  
+  .courseTitle {
+    font-size: 1.5rem;
+  }
+  
+  .courseDescription {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+  
+  .courseLink {
+    font-size: 1rem;
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #eaeaea;
+  }
+  
