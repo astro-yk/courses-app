@@ -31,7 +31,7 @@ export default function Home() {
             Learn Next.js from the best in the industry.
           </p>
           <Link href="/courses">
-            <a className={styles.heroButton}>Browse Courses</a>
+            Browse Courses
           </Link>
         </section>
         <section className={styles.coursesSection}>
@@ -43,7 +43,7 @@ export default function Home() {
                 A comprehensive introduction to Next.js.
               </p>
               <Link href="/courses/beginners">
-                <a className={styles.courseLink}>Learn More</a>
+                Learn More
               </Link>
             </div>
             <div className={styles.courseCard}>
@@ -52,7 +52,7 @@ export default function Home() {
                 Take your Next.js skills to the next level.
               </p>
               <Link href="/courses/advanced">
-                <a className={styles.courseLink}>Learn More</a>
+                Learn More
               </Link>
             </div>
             <div className={styles.courseCard}>
@@ -61,7 +61,7 @@ export default function Home() {
                 Optimize your Next.js site for search engines.
               </p>
               <Link href="/courses/seo">
-                <a className={styles.courseLink}>Learn More</a>
+                Learn More
               </Link>
             </div>
           </div>

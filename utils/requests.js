@@ -6,7 +6,8 @@ export async function handleLogin(response, setSuccessMessages) {
   
   setCookie('token', response_json["token"])
   setCookie('token_expiration', response_json["token_expiration"])
-  setSuccessMessages(prevSuccessMessages => [...prevSuccessMessages, "Login Successful! Redirecting.."])
+  setSuccessMessages(prevSuccessMessages => [...prevSuccessMessages, "Login Successful!"])
+  return true;
 }
 
 export async function handleFailedLogin(response, setErrorMessages) {
