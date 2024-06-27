@@ -1,8 +1,8 @@
-import { Box, Grid, Stack, Typography, Button, Container, TextField, Alert } from "@mui/material";
+import { Box, Container, Typography, Button, TextField, Alert } from "@mui/material";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { backend_url } from "../utils/constants";
-
+import styles from '../styles/Register.module.css';
 
 function register_account(email, password, setErrorMessages, setSuccessMessages, router) {
   fetch(`${backend_url}/coursesapp/register/`, {
@@ -37,45 +37,56 @@ async function handleFailedRegistration(response, setErrorMessages) {
   }
 
   setErrorMessages(error_messages);
-  
 }
 
-export default function Login() {
-
+export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessages, setErrorMessages] = useState([]);
   const [successMessages, setSuccessMessages] = useState([]);
   const router = useRouter();
 
-
   return (
     <Box component="div">
-      <Container maxWidth="sm" sx={{ marginTop: "5em", paddingBlock: "2em", border: "3px solid #FFFFFF", borderRadius: "1em" }}>
-        <Typography variant="h3" sx={{ textAlign: "center", fontWeight: 800 }}>
-          REGISTER
+      <Container maxWidth="sm" className={styles.container}>
+        <Typography variant="h4" className={styles.typography}>
+          Register
         </Typography>
 
-        <TextField id="email" label="e-mail" variant="outlined" type="email" fullWidth sx={{ marginTop: "2em", fieldset: { borderColor: "white" } }} onChange={(e) => setEmail(e.target.value)} />
-        <TextField id="email" label="password" type="password" variant="outlined" fullWidth sx={{ marginTop: "2em", fieldset: { borderColor: "white" } }} onChange={(e) => setPassword(e.target.value)} />
+        <TextField 
+          id="email" 
+          label="E-mail" 
+          variant="outlined" 
+          type="email" 
+          fullWidth 
+          className={styles.textField} 
+          onChange={(e) => setEmail(e.target.value)} 
+        />
+        <TextField 
+          id="password" 
+          label="Password" 
+          type="password" 
+          variant="outlined" 
+          fullWidth 
+          className={styles.textField} 
+          onChange={(e) => setPassword(e.target.value)} 
+        />
 
-        <Button fullWidth sx={{ marginTop: "2em" }} variant="contained" onClick={() => register_account(email, password, setErrorMessages, setSuccessMessages, router)}>Register</Button>
+        <Button fullWidth className={styles.button} variant="contained" onClick={() => register_account(email, password, setErrorMessages, setSuccessMessages, router)}>Register</Button>
       </Container>
 
-      <Container maxWidth="sm" sx={{ marginTop: "1em" }}>
+      <Container maxWidth="sm">
         {errorMessages.map((item, index) => (
-          <Alert severity="error" sx={{marginBlock: "1em"}}>
+          <Alert severity="error" className={styles.errorAlert} key={index}>
             {item}
           </Alert>
         ))}
         {successMessages.map((item, index) => (
-          <Alert severity="success" sx={{marginBlock: "1em"}}>
+          <Alert severity="success" className={styles.successAlert} key={index}>
             {item}
           </Alert>
         ))}
       </Container>
-
-
     </Box>
-  )
+  );
 }
