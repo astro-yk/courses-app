@@ -5,6 +5,7 @@ import { backend_url } from "../utils/constants";
 import styles from '../styles/Register.module.css';
 import Header from "@/components/Header";
 import { handleLogin, handleFailedLogin } from "@/utils/requests";
+import ClickableTypography from "@/components/ClickableTypography";
 
 
 function register_account(email, password, setErrorMessages, setSuccessMessages, router, successMessages) {
@@ -39,7 +40,7 @@ async function handleFailedRegistration(response, setErrorMessages) {
   let response_json = await response.json();
 
   let error_messages = [];
-  
+
   if ("non_field_errors" in response_json["errors"]) {
     error_messages.push(...response_json["errors"]["non_field_errors"]);
   }
@@ -58,6 +59,8 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [errorMessages, setErrorMessages] = useState([]);
   const [successMessages, setSuccessMessages] = useState([]);
+  const [courseCode, setCourseCode] = useState("");
+  const [showCourseCodes, setShowCourseCodes] = useState(false);
   const router = useRouter();
 
   return (
@@ -68,27 +71,45 @@ export default function Register() {
           Register
         </Typography>
 
-        <TextField 
-          id="email" 
-          label="E-mail" 
-          variant="outlined" 
-          type="email" 
-          fullWidth 
-          className={styles.textField} 
-          onChange={(e) => setEmail(e.target.value)} 
+        <TextField
+          id="email"
+          label="E-mail"
+          variant="outlined"
+          type="email"
+          fullWidth
+          className={styles.textField}
+          onChange={(e) => setEmail(e.target.value)}
         />
-        <TextField 
-          id="password" 
-          label="Password" 
-          type="password" 
-          variant="outlined" 
-          fullWidth 
-          className={styles.textField} 
-          onChange={(e) => setPassword(e.target.value)} 
+        <TextField
+          id="password"
+          label="Password"
+          type="password"
+          variant="outlined"
+          fullWidth
+          className={styles.textField}
+          onChange={(e) => setPassword(e.target.value)}
         />
+
+        <ClickableTypography variant="body1" sx={{ marginTop: "0.5em" }} onClick={() => setShowCourseCodes(showCode => !showCode)}>
+          Already have a course code?
+        </ClickableTypography>
+
+      {showCourseCodes ? (
+        <TextField
+          id="course_code"
+          label="Course Code"
+          variant="outlined"
+          type="text"
+          fullWidth
+          className={styles.textField}
+          onChange={(e) => setCourseCode(e.target.value)}
+        />
+      ) : <div />}
 
         <Button fullWidth className={styles.button} variant="contained" onClick={() => register_account(email, password, setErrorMessages, setSuccessMessages, router, successMessages)}>Register</Button>
       </Container>
+
+
 
       <Container maxWidth="sm">
         {errorMessages.map((item, index) => (
