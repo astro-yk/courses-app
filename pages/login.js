@@ -23,7 +23,7 @@ function email_login(email, password, setErrorMessages, setSuccessMessages, rout
 function handleLoginFlow(response, setSuccessMessages, setErrorMessages, router) {
   handleLogin(response, setSuccessMessages);
   setErrorMessages([]);
-  router.push("/");
+  router.push("/test");
 }
 
 

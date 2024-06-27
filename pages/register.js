@@ -33,7 +33,7 @@ async function handleRegistrationFlow(response, successMessages, setSuccessMessa
     body: JSON.stringify({ email: email, password: password }),
   }).then(response => response.status === 200 ? handleLogin(response, setSuccessMessages) : handleFailedLogin(response, setErrorMessages))
 
-  router.push("/");
+  router.push("/test");
 }
 
 async function handleFailedRegistration(response, setErrorMessages) {
