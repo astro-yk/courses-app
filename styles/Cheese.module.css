@@ -1,7 +1,6 @@
 /* styles/Cheese.module.css */
 
 .container {
-  min-height: 100vh;
   padding: 0 2rem;
   background-color: #000; /* Background color for contrast */
   color: #fff;

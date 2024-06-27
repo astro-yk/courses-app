@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Button, TextField, Alert } from "@mui/material";
+import { Box, Typography, Button, Container, TextField, Alert } from "@mui/material";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { backend_url } from "../utils/constants";
@@ -13,12 +13,13 @@ function register_account(email, password, setErrorMessages, setSuccessMessages,
     },
     body: JSON.stringify({ email: email, password: password }),
 
-  }).then(response => response.status === 201 ? handleRegistration(response, setSuccessMessages, router) : handleFailedRegistration(response, setErrorMessages))
+  }).then(response => response.status === 201 ? handleRegistration(response, setSuccessMessages, setErrorMessages, router) : handleFailedRegistration(response, setErrorMessages))
 }
 
 async function handleRegistration(response, setSuccessMessages, router) {
   setSuccessMessages(["Registration Completed! Redirecting to Login"]);
-  router.push("/signin");
+  setErrorMessages([]);
+  router.push("/login");
 }
 
 async function handleFailedRegistration(response, setErrorMessages) {
