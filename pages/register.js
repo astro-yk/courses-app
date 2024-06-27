@@ -4,8 +4,10 @@ import { useRouter } from "next/router";
 import { backend_url } from "../utils/constants";
 import styles from '../styles/Register.module.css';
 import Header from "@/components/Header";
+import { handleLogin, handleFailedLogin } from "@/utils/requests";
 
-function register_account(email, password, setErrorMessages, setSuccessMessages, router) {
+
+function register_account(email, password, setErrorMessages, setSuccessMessages, router, successMessages) {
   fetch(`${backend_url}/coursesapp/register/`, {
     method: 'POST',
     headers: {
@@ -14,13 +16,23 @@ function register_account(email, password, setErrorMessages, setSuccessMessages,
     },
     body: JSON.stringify({ email: email, password: password }),
 
-  }).then(response => response.status === 201 ? handleRegistration(response, setSuccessMessages, setErrorMessages, router) : handleFailedRegistration(response, setErrorMessages))
+  }).then(response => response.status === 201 ? handleRegistrationFlow(response, successMessages, setSuccessMessages, setErrorMessages, router, email, password) : handleFailedRegistration(response, setErrorMessages))
 }
 
-async function handleRegistration(response, setSuccessMessages, router) {
-  setSuccessMessages(["Registration Completed! Redirecting to Login"]);
+async function handleRegistrationFlow(response, successMessages, setSuccessMessages, setErrorMessages, router, email, password) {
+  setSuccessMessages(["Registration Completed!"]);
   setErrorMessages([]);
-  router.push("/login");
+
+  fetch(`${backend_url}/coursesapp/login/email-password/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      "Accept": "application/json",
+    },
+    body: JSON.stringify({ email: email, password: password }),
+  }).then(response => response.status === 200 ? handleLogin(response, setSuccessMessages) : handleFailedLogin(response, setErrorMessages))
+
+  router.push("/");
 }
 
 async function handleFailedRegistration(response, setErrorMessages) {
@@ -50,7 +62,7 @@ export default function Register() {
 
   return (
     <Box component="div">
-      <Header/>
+      <Header />
       <Container maxWidth="sm" className={styles.container}>
         <Typography variant="h4" className={styles.typography}>
           Register
@@ -75,7 +87,7 @@ export default function Register() {
           onChange={(e) => setPassword(e.target.value)} 
         />
 
-        <Button fullWidth className={styles.button} variant="contained" onClick={() => register_account(email, password, setErrorMessages, setSuccessMessages, router)}>Register</Button>
+        <Button fullWidth className={styles.button} variant="contained" onClick={() => register_account(email, password, setErrorMessages, setSuccessMessages, router, successMessages)}>Register</Button>
       </Container>
 
       <Container maxWidth="sm">

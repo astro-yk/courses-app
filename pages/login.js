@@ -3,6 +3,10 @@ import { useState } from "react";
 import { backend_url } from "../utils/constants";
 import Header from "@/components/Header";
 import { useRouter } from "next/router";
+import styles from '../styles/Register.module.css';
+import { handleLogin, handleFailedLogin } from "@/utils/requests";
+
+
 
 function email_login(email, password, setErrorMessages, setSuccessMessages, router) {
   fetch(`${backend_url}/coursesapp/login/email-password/`, {
@@ -12,18 +16,16 @@ function email_login(email, password, setErrorMessages, setSuccessMessages, rout
       "Accept": "application/json",
     },
     body: JSON.stringify({ email: email, password: password }),
-
-  }).then(response => response.status === 201 ? handleRegistration(response, setSuccessMessages, router) : handleFailedLogin(response, setErrorMessages))
+  }).then(response => response.status === 200 ? handleLoginFlow(response, setSuccessMessages, setErrorMessages, router) : handleFailedLogin(response, setErrorMessages))
 }
 
-async function handleLogin(response, setSuccessMessages, router) {
-  console.log("sigma")
+
+function handleLoginFlow(response, setSuccessMessages, setErrorMessages, router) {
+  handleLogin(response, setSuccessMessages);
+  setErrorMessages([]);
+  router.push("/");
 }
 
-async function handleFailedLogin(response, setErrorMessages, router) {
-  let response_json = await response.json();
-  console.log(response_json);
-}
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -37,26 +39,41 @@ export default function Login() {
   return (
     <Box component="div">
       <Header />
-      <Container maxWidth="sm" sx={{ marginTop: "5em", paddingBlock: "2em", border: "3px solid #FFFFFF", borderRadius: "1em" }}>
-        <Typography variant="h3" sx={{ textAlign: "center", fontWeight: 800 }}>
-          LOGIN
+      <Container maxWidth="sm" className={styles.container}>
+        <Typography variant="h4" className={styles.typography}>
+          Login
         </Typography>
 
-        <TextField id="email" label="e-mail" variant="outlined" type="email" fullWidth sx={{ marginTop: "2em", fieldset: { borderColor: "white" } }} onChange={(e) => setEmail(e.target.value)} />
-        <TextField id="password" label="password" type="password" variant="outlined" fullWidth sx={{ marginTop: "2em", fieldset: { borderColor: "white" } }} onChange={(e) => setPassword(e.target.value)} />
-        
-        <Button fullWidth sx={{ marginTop: "2em" }} onClick={() => email_login(email, password, setErrorMessages, setSuccessMessages, router)} variant="contained">Login</Button>
+        <TextField 
+          id="email" 
+          label="E-mail" 
+          variant="outlined" 
+          type="email" 
+          fullWidth 
+          className={styles.textField} 
+          onChange={(e) => setEmail(e.target.value)} 
+        />
+        <TextField 
+          id="password" 
+          label="Password" 
+          type="password" 
+          variant="outlined" 
+          fullWidth 
+          className={styles.textField} 
+          onChange={(e) => setPassword(e.target.value)} 
+        />
 
+        <Button fullWidth className={styles.button} variant="contained" onClick={() => email_login(email, password, setErrorMessages, setSuccessMessages, router)}>Login</Button>
       </Container>
 
-      <Container maxWidth="sm" sx={{ marginTop: "1em" }}>
+      <Container maxWidth="sm">
         {errorMessages.map((item, index) => (
-          <Alert severity="error" sx={{marginBlock: "1em"}}>
+          <Alert severity="error" className={styles.errorAlert} key={index}>
             {item}
           </Alert>
         ))}
         {successMessages.map((item, index) => (
-          <Alert severity="success" sx={{marginBlock: "1em"}}>
+          <Alert severity="success" className={styles.successAlert} key={index}>
             {item}
           </Alert>
         ))}
