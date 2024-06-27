@@ -12,6 +12,10 @@ function MyApp({ Component, pageProps }) {
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <Component {...pageProps} />
     </>
