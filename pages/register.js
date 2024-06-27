@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { backend_url } from "../utils/constants";
 import styles from '../styles/Register.module.css';
+import Header from "@/components/Header";
 
 function register_account(email, password, setErrorMessages, setSuccessMessages, router) {
   fetch(`${backend_url}/coursesapp/register/`, {
@@ -49,6 +50,7 @@ export default function Register() {
 
   return (
     <Box component="div">
+      <Header/>
       <Container maxWidth="sm" className={styles.container}>
         <Typography variant="h4" className={styles.typography}>
           Register

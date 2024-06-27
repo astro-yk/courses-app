@@ -1,0 +1,40 @@
+.container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #000; /* Adjust as necessary for your theme */
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+  
+  .logo {
+    height: 50px; /* Adjust as necessary */
+  }
+  
+  .nav {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navLink {
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .navLink:hover {
+    color: #EAB308; /* Highlight color */
+  }
+  

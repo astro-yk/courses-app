@@ -1,19 +1,36 @@
-/* styles/Home.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .container {
+  --primary-color: #EAB308;
+  --secondary-color: #333;
+  --background-color: #1a1a1a;
+  --text-color: #fff;
+  --white-color: #000;
+  --link-color: #EAB308;
+
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
   padding: 0 20px;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: 20px;
+  background-color: var(--white-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .title {
   font-size: 2rem;
+  color: var(--primary-color);
+  font-weight: bold;
 }
 
 .nav {
@@ -24,11 +41,17 @@
 .navLink {
   font-size: 1rem;
   text-decoration: none;
-  color: #fff;
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: var(--secondary-color);
 }
 
 .main {
   padding: 40px 0;
+  flex: 1;
 }
 
 .hero {
@@ -38,10 +61,12 @@
 
 .heroTitle {
   font-size: 2.5rem;
+  color: var(--text-color);
 }
 
 .heroSubtitle {
   font-size: 1.2rem;
+  margin: 10px 0;
 }
 
 .heroButton {
@@ -49,10 +74,16 @@
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 1rem;
-  color: #333;
-  background-color: #fff;
+  color: var(--background-color);
+  background-color: var(--primary-color);
   border-radius: 5px;
   text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.heroButton:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
 }
 
 .coursesSection {
@@ -62,23 +93,33 @@
 .sectionTitle {
   font-size: 2rem;
   margin-bottom: 20px;
+  color: var(--text-color);
 }
 
 .coursesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 
 .courseCard {
   padding: 20px;
-  border: 1px solid #eaeaea;
+  border: 1px solid var(--secondary-color);
   border-radius: 10px;
-  background-color: #444;
+  background-color: var(--white-color);
+  color: var(--text-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.courseCard:hover {
+  transform: translateY(-5px);
 }
 
 .courseTitle {
   font-size: 1.5rem;
+  color: var(--primary-color);
 }
 
 .courseDescription {
@@ -89,11 +130,73 @@
 .courseLink {
   font-size: 1rem;
   text-decoration: none;
-  color: #fff;
+  color: var(--link-color);
+  transition: color 0.3s ease;
+}
+
+.courseLink:hover {
+  color: var(--secondary-color);
+}
+
+.courseDetailSection {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.courseDetail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.courseDetailImage img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+}
+
+.courseDetailContent {
+  max-width: 600px;
+  margin-left: 20px;
+}
+
+.courseDetailTitle {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.courseDetailDescription {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.courseDetailSubtitle {
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+.courseDetailList {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.courseDetailInstructor {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.courseDetailReviews p {
+  font-size: 1rem;
+  margin-bottom: 10px;
 }
 
 .footer {
   text-align: center;
   padding: 20px 0;
   border-top: 1px solid #eaeaea;
+  background-color: var(--white-color);
+  color: var(--text-color);
 }
