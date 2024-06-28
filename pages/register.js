@@ -8,8 +8,6 @@ import { handleLogin, handleFailedLogin } from "@/utils/requests";
 import ClickableTypography from "@/components/ClickableTypography";
 import { getCookie } from 'cookies-next';
 
-
-
 function register_account(email, password, setErrorMessages, setSuccessMessages, router, successMessages, showCourseCodes, courseCode) {
   fetch(`${backend_url}/coursesapp/register/`, {
     method: 'POST',
@@ -18,7 +16,6 @@ function register_account(email, password, setErrorMessages, setSuccessMessages,
       "Accept": "application/json",
     },
     body: JSON.stringify({ email: email, password: password }),
-
   }).then(response => response.status === 201 ? handleRegistrationFlow(response, successMessages, setSuccessMessages, setErrorMessages, router, email, password, showCourseCodes, courseCode) : handleFailedRegistration(response, setErrorMessages))
 }
 
@@ -33,7 +30,10 @@ async function handleRegistrationFlow(response, successMessages, setSuccessMessa
       "Accept": "application/json",
     },
     body: JSON.stringify({ email: email, password: password }),
-  }).then(response => response.status === 200 ? handleLogin(response, setSuccessMessages).then(res => signUpForCourses(showCourseCodes, courseCode, setSuccessMessages, setErrorMessages)) : handleFailedLogin(response, setErrorMessages).then(res => setErrorMessages(messages => [...messages, "Registration succeeded but failed to login :("])))
+  }).then(response => response.status === 200 ? handleLogin(response, setSuccessMessages).then(() => {
+    signUpForCourses(showCourseCodes, courseCode, setSuccessMessages, setErrorMessages);
+    router.push('/test'); // Redirect to the dashboard or desired page
+  }) : handleFailedLogin(response, setErrorMessages).then(() => setErrorMessages(messages => [...messages, "Registration succeeded but failed to login :("])))
 }
 
 function signUpForCourses(showCourseCodes, course, setSuccessMessages, setErrorMessages) {
@@ -127,8 +127,6 @@ export default function Register() {
 
         <Button fullWidth className={styles.button} variant="contained" onClick={() => register_account(email, password, setErrorMessages, setSuccessMessages, router, successMessages, showCourseCodes, courseCode)}>Register</Button>
       </Container>
-
-
 
       <Container maxWidth="sm">
         {errorMessages.map((item, index) => (
