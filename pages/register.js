@@ -6,9 +6,11 @@ import styles from '../styles/Register.module.css';
 import Header from "@/components/Header";
 import { handleLogin, handleFailedLogin } from "@/utils/requests";
 import ClickableTypography from "@/components/ClickableTypography";
+import { getCookie } from 'cookies-next';
 
 
-function register_account(email, password, setErrorMessages, setSuccessMessages, router, successMessages) {
+
+function register_account(email, password, setErrorMessages, setSuccessMessages, router, successMessages, showCourseCodes, courseCode) {
   fetch(`${backend_url}/coursesapp/register/`, {
     method: 'POST',
     headers: {
@@ -17,10 +19,10 @@ function register_account(email, password, setErrorMessages, setSuccessMessages,
     },
     body: JSON.stringify({ email: email, password: password }),
 
-  }).then(response => response.status === 201 ? handleRegistrationFlow(response, successMessages, setSuccessMessages, setErrorMessages, router, email, password) : handleFailedRegistration(response, setErrorMessages))
+  }).then(response => response.status === 201 ? handleRegistrationFlow(response, successMessages, setSuccessMessages, setErrorMessages, router, email, password, showCourseCodes, courseCode) : handleFailedRegistration(response, setErrorMessages))
 }
 
-async function handleRegistrationFlow(response, successMessages, setSuccessMessages, setErrorMessages, router, email, password) {
+async function handleRegistrationFlow(response, successMessages, setSuccessMessages, setErrorMessages, router, email, password, showCourseCodes, courseCode) {
   setSuccessMessages(["Registration Completed!"]);
   setErrorMessages([]);
 
@@ -31,9 +33,26 @@ async function handleRegistrationFlow(response, successMessages, setSuccessMessa
       "Accept": "application/json",
     },
     body: JSON.stringify({ email: email, password: password }),
-  }).then(response => response.status === 200 ? handleLogin(response, setSuccessMessages) : handleFailedLogin(response, setErrorMessages))
+  }).then(response => response.status === 200 ? handleLogin(response, setSuccessMessages).then(res => signUpForCourses(showCourseCodes, courseCode, setSuccessMessages, setErrorMessages)) : handleFailedLogin(response, setErrorMessages).then(res => setErrorMessages(messages => [...messages, "Registration succeeded but failed to login :("])))
+}
 
-  router.push("/test");
+function signUpForCourses(showCourseCodes, course, setSuccessMessages, setErrorMessages) {
+  if (!showCourseCodes) {
+    return;
+  }
+  if (course.length === 0) {
+    return;
+  }
+
+  fetch(`${backend_url}/coursesapp/join_course/${course}/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      "Accept": "application/json",
+      "Authorization": `Token ${getCookie("token")}`
+    },
+  }).then(response => response.status === 200 ? setSuccessMessages(messages=> [...messages, "Successfully signed up for the course!"]) : setErrorMessages(messages=> [...messages, "Could not sign up for the course."]) )
+
 }
 
 async function handleFailedRegistration(response, setErrorMessages) {
@@ -106,7 +125,7 @@ export default function Register() {
         />
       ) : <div />}
 
-        <Button fullWidth className={styles.button} variant="contained" onClick={() => register_account(email, password, setErrorMessages, setSuccessMessages, router, successMessages)}>Register</Button>
+        <Button fullWidth className={styles.button} variant="contained" onClick={() => register_account(email, password, setErrorMessages, setSuccessMessages, router, successMessages, showCourseCodes, courseCode)}>Register</Button>
       </Container>
 
 
