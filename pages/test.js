@@ -19,8 +19,9 @@ export default function Home() {
             <span className={styles.dreamers}>AND DREAMERS.</span>
           </h1>
           <p className={styles.description}>
-            California Creator's Institute has partnered with Pillai College to bring our comprehensive educational experience to Mumbai. Together, we aim to provide a blend of academic excellence and practical, real-world skills right in the heart of this vibrant city.
-          </p>
+  California Creator&apos;s Institute has partnered with Pillai College to bring our comprehensive educational experience to Mumbai. Together, we aim to provide a blend of academic excellence and practical, real-world skills right in the heart of this vibrant city.
+</p>
+
           <Link href="/about" passHref legacyBehavior>
             <a className={styles.button}>MORE INFO!</a>
           </Link>
