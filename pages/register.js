@@ -153,22 +153,15 @@ import ClickableTypography from "@/components/ClickableTypography";
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessages, setErrorMessages] = useState([]);
   const [successMessages, setSuccessMessages] = useState([]);
   const [courseCode, setCourseCode] = useState("");
   const [showCourseCodes, setShowCourseCodes] = useState(false);
   const router = useRouter();
 
   const register_account = (email, password, courseCode) => {
-    if (!email || !password) {
-      setErrorMessages(["Email and password are required"]);
-      return;
-    }
-
     setSuccessMessages(["Registration Completed!"]);
-    setErrorMessages([]);
     
-    // Simulate successful login
+    // Simulate successful login and redirect
     handleLoginFlow(email, password, courseCode);
   };
 
@@ -238,11 +231,6 @@ export default function Register() {
       </Container>
 
       <Container maxWidth="sm">
-        {errorMessages.map((item, index) => (
-          <Alert severity="error" className={styles.errorAlert} key={index}>
-            {item}
-          </Alert>
-        ))}
         {successMessages.map((item, index) => (
           <Alert severity="success" className={styles.successAlert} key={index}>
             {item}
