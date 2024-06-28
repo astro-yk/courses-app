@@ -14,14 +14,14 @@ export default function Home() {
           <p className={styles.heroSubtitle}>
             Empower your future with our specialized courses designed for aspiring content creators.
           </p>
-          <Link href="/courses" legacyBehavior>
+          <Link href="/about" legacyBehavior>
             <a className={styles.heroButton}>Explore Our Courses</a>
           </Link>
         </section>
         <section className={styles.coursesSection}>
           <h3 className={styles.sectionTitle}>Our Courses</h3>
           <div className={styles.coursesGrid}>
-            <Link href="/courses/entrepreneurship" legacyBehavior>
+            <Link href="/upload" legacyBehavior>
               <a className={styles.courseCard}>
                 <h4 className={styles.courseTitle}>Entrepreneurship for Content Creators</h4>
                 <p className={styles.courseDescription}>
@@ -29,7 +29,7 @@ export default function Home() {
                 </p>
               </a>
             </Link>
-            <Link href="/courses/marketing" legacyBehavior>
+            <Link href="/upload" legacyBehavior>
               <a className={styles.courseCard}>
                 <h4 className={styles.courseTitle}>Marketing Mastery</h4>
                 <p className={styles.courseDescription}>
@@ -37,7 +37,7 @@ export default function Home() {
                 </p>
               </a>
             </Link>
-            <Link href="/courses/placement" legacyBehavior>
+            <Link href="/upload" legacyBehavior>
               <a className={styles.courseCard}>
                 <h4 className={styles.courseTitle}>Guaranteed Placement Program</h4>
                 <p className={styles.courseDescription}>
