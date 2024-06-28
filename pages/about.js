@@ -6,58 +6,42 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Header/>
-      {/* <header className={styles.header}>
-        <h1 className={styles.title}>
-          Next.js Courses <i className="fas fa-book"></i>
-        </h1>
-        <nav className={styles.nav}>
-          <Link href="/about" legacyBehavior>
-            <a className={styles.navLink}>About</a>
-          </Link>
-          <Link href="/courses" legacyBehavior>
-            <a className={styles.navLink}>Courses</a>
-          </Link>
-          <Link href="/contact" legacyBehavior>
-            <a className={styles.navLink}>Contact</a>
-          </Link>
-        </nav>
-      </header> */}
       <main className={styles.main}>
         <section className={styles.hero}>
           <h2 className={styles.heroTitle}>
-            Master Next.js <i className="fas fa-laptop-code"></i>
+            Launch Your Career in Entrepreneurship and Marketing <i className="fas fa-rocket"></i>
           </h2>
           <p className={styles.heroSubtitle}>
-            Learn Next.js from the best in the industry.
+            Empower your future with our specialized courses designed for aspiring content creators.
           </p>
           <Link href="/courses" legacyBehavior>
-            <a className={styles.heroButton}>Browse Courses</a>
+            <a className={styles.heroButton}>Explore Our Courses</a>
           </Link>
         </section>
         <section className={styles.coursesSection}>
-          <h3 className={styles.sectionTitle}>Featured Courses</h3>
+          <h3 className={styles.sectionTitle}>Our Courses</h3>
           <div className={styles.coursesGrid}>
-            <Link href="/courses/beginners" legacyBehavior>
+            <Link href="/courses/entrepreneurship" legacyBehavior>
               <a className={styles.courseCard}>
-                <h4 className={styles.courseTitle}>Next.js for Beginners</h4>
+                <h4 className={styles.courseTitle}>Entrepreneurship for Content Creators</h4>
                 <p className={styles.courseDescription}>
-                  A comprehensive introduction to Next.js.
+                  Discover the tools and strategies to start and grow your own business as a content creator.
                 </p>
               </a>
             </Link>
-            <Link href="/courses/advanced" legacyBehavior>
+            <Link href="/courses/marketing" legacyBehavior>
               <a className={styles.courseCard}>
-                <h4 className={styles.courseTitle}>Advanced Next.js Techniques</h4>
+                <h4 className={styles.courseTitle}>Marketing Mastery</h4>
                 <p className={styles.courseDescription}>
-                  Take your Next.js skills to the next level.
+                  Learn cutting-edge marketing techniques to build a strong brand and engage your audience.
                 </p>
               </a>
             </Link>
-            <Link href="/courses/seo" legacyBehavior>
+            <Link href="/courses/placement" legacyBehavior>
               <a className={styles.courseCard}>
-                <h4 className={styles.courseTitle}>Next.js and SEO</h4>
+                <h4 className={styles.courseTitle}>Guaranteed Placement Program</h4>
                 <p className={styles.courseDescription}>
-                  Optimize your Next.js site for search engines.
+                  Complete our courses and secure a position in the industry with our placement assistance.
                 </p>
               </a>
             </Link>
@@ -65,7 +49,7 @@ export default function Home() {
         </section>
       </main>
       <footer className={styles.footer}>
-        <p>&copy; 2024 Next.js Courses. All rights reserved.</p>
+        <p>&copy; 2024 Entrepreneurship and Marketing Courses. All rights reserved.</p>
       </footer>
     </div>
   );

@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.container {
+  --primary-color: #EAB308;
+  --secondary-color: #444;
+  --background-color: #121212;
+  --text-color: #fff;
+  --complete-color: #28a745;
+
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 36px;
+  margin: 0;
+  color: var(--text-color);
+  padding-bottom: 2.5rem;
+}
+
+.subtitle {
+  font-size: 16px;
+  margin: 0;
+  color: var(--text-color);
+  padding-bottom: 1.5rem;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: #1e1e1e;
+  border: 1px solid var(--secondary-color);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.cardTitle {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.cardText {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.buttonContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.button,
+.completeButton {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover,
+.completeButton:hover {
+  background-color: #EAB308;
+  transform: translateY(-2px);
+}
+
+.completeButton {
+  background-color: var(--secondary-color);
+
+}
+
+.completeButton:hover {
+  background-color: #333;
+}
+
+.complete {
+  background-color: var(--complete-color) !important;
+}
+
+.fileInput {
+  display: none;
+}
+
+.fileLabel {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 10px 40px;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.fileLabel:hover {
+  background-color: #EAB308;
+  transform: translateY(-2px);
+}
+
+.fileList {
+  margin-left: 10px;
+  color: var(--text-color);
+}
+
+.fileName {
+  display: block;
+}
+
+.message {
+  text-align: center;
+  font-size: 16px;
+  color: var(--complete-color);
+}
+
+.main {
+  padding: 40px 0;
+  flex: 1;
+}
