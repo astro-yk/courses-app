@@ -1,7 +1,6 @@
 import { Box, Typography, Button, Container, TextField, Alert } from "@mui/material";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import styles from '../styles/Register.module.css';
 import Header from "@/components/Header";
 import ClickableTypography from "@/components/ClickableTypography";
 
@@ -15,6 +14,7 @@ export default function Register() {
 
   const register_account = (email, password, courseCode) => {
     setSuccessMessages(["Registration Completed!"]);
+    
     // Simulate successful login and redirect
     handleLoginFlow(email, password, courseCode);
   };
@@ -41,8 +41,27 @@ export default function Register() {
   return (
     <Box component="div">
       <Header />
-      <Container maxWidth="sm" className={styles.container}>
-        <Typography variant="h4" className={styles.typography}>
+      <Container
+        maxWidth="sm"
+        sx={{
+          marginTop: '5em',
+          padding: '2em',
+          background: 'linear-gradient(to bottom, #1e1e1e, #000000)',
+          color: '#fff',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
+          borderRadius: '1em',
+          textAlign: 'center'
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: 500,
+            color: '#fff',
+            marginBottom: '1em',
+            fontFamily: 'Anton, sans-serif'
+          }}
+        >
           Register
         </Typography>
 
@@ -52,7 +71,24 @@ export default function Register() {
           variant="outlined"
           type="email"
           fullWidth
-          className={styles.textField}
+          sx={{
+            marginTop: '1.5em',
+            '& fieldset': {
+              borderColor: '#555 !important',
+              borderRadius: '0.5em'
+            },
+            '&:hover fieldset': {
+              borderColor: '#777 !important'
+            },
+            '& input': {
+              color: '#fff',
+              fontFamily: 'Roboto, sans-serif'
+            },
+            '& label': {
+              color: '#aaa',
+              fontFamily: 'Roboto, sans-serif'
+            }
+          }}
           onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
@@ -61,7 +97,24 @@ export default function Register() {
           type="password"
           variant="outlined"
           fullWidth
-          className={styles.textField}
+          sx={{
+            marginTop: '1.5em',
+            '& fieldset': {
+              borderColor: '#555 !important',
+              borderRadius: '0.5em'
+            },
+            '&:hover fieldset': {
+              borderColor: '#777 !important'
+            },
+            '& input': {
+              color: '#fff',
+              fontFamily: 'Roboto, sans-serif'
+            },
+            '& label': {
+              color: '#aaa',
+              fontFamily: 'Roboto, sans-serif'
+            }
+          }}
           onChange={(e) => setPassword(e.target.value)}
         />
 
@@ -76,17 +129,51 @@ export default function Register() {
             variant="outlined"
             type="text"
             fullWidth
-            className={styles.textField}
+            sx={{
+              marginTop: '1.5em',
+              '& fieldset': {
+                borderColor: '#555 !important',
+                borderRadius: '0.5em'
+              },
+              '&:hover fieldset': {
+                borderColor: '#777 !important'
+              },
+              '& input': {
+                color: '#fff',
+                fontFamily: 'Roboto, sans-serif'
+              },
+              '& label': {
+                color: '#aaa',
+                fontFamily: 'Roboto, sans-serif'
+              }
+            }}
             onChange={(e) => setCourseCode(e.target.value)}
           />
         ) : <div />}
 
-        <Button fullWidth className={styles.button} variant="contained" onClick={() => register_account(email, password, courseCode)}>Register</Button>
+        <Button
+          fullWidth
+          variant="contained"
+          sx={{
+            marginTop: '1em',
+            background: '#4285f4 !important',
+            color: '#fff !important',
+            transition: 'background 0.3s ease',
+            fontFamily: 'Roboto, sans-serif',
+            borderRadius: '0.5em',
+            '&:hover': {
+              background: '#357ae8 !important'
+            }
+          }}
+          onClick={() => register_account(email, password, courseCode)}
+        >
+          Register
+        </Button>
       </Container>
 
       <Container maxWidth="sm">
         {successMessages.map((item, index) => (
-          <Alert severity="success" className={styles.successAlert} key={index}>
+          <Alert severity="success" key={index} sx={{ marginTop: '1em', transition: 'opacity 0.3s ease', fontFamily: 'Roboto, sans-serif', borderRadius: '0.5em' }}>
             {item}
           </Alert>
         ))}
