@@ -92,3 +92,37 @@
   background-color: #fff;
   color: #000;
 }
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem; /* Adjust font size for smaller screens */
+    line-height: 1.1;
+  }
+
+  .description {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    max-width: 100%; /* Ensure description fits within screen */
+    padding: 0 1rem; /* Add padding for better spacing */
+  }
+
+  .button {
+    font-size: 1rem; /* Adjust button font size */
+    padding: 0.8rem 1.5rem; /* Adjust padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem; /* Further adjust font size for very small screens */
+  }
+
+  .description {
+    font-size: 0.8rem; /* Further adjust font size for very small screens */
+  }
+
+  .button {
+    font-size: 0.9rem; /* Further adjust button font size */
+    padding: 0.6rem 1.2rem; /* Further adjust padding for very small screens */
+  }
+}

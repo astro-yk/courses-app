@@ -11,7 +11,7 @@ export default function Header() {
       </Head>
 
       <header className={styles.header}>
-        <img src="/logo.png" alt="CCI Logo" className={styles.logo} />
+        <img src="/logo.png"  className={styles.logo} />
         <nav className={styles.nav}>
           <a href="#" className={styles.navLink}><i className="fab fa-instagram"></i></a>
           <a href="#" className={styles.navLink}><i className="fab fa-tiktok"></i></a>

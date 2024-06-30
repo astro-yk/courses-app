@@ -10,68 +10,69 @@
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
-}
-
-.typography {
+  }
+  
+  .typography {
     text-align: center;
     font-weight: 500;
     color: #fff;
     margin-bottom: 1em;
     font-family: 'Anton', sans-serif;
-}
-
-.textField {
+  }
+  
+  .textField {
     margin-top: 1.5em;
-}
-
-.textField fieldset {
+  }
+  
+  .textField fieldset {
     border-color: #555 !important;
     transition: border-color 0.3s ease;
     border-radius: 0.5em;
-}
-
-.textField:hover fieldset {
+  }
+  
+  .textField:hover fieldset {
     border-color: #777 !important;
-}
-
-.textField input {
+  }
+  
+  .textField input {
     color: #fff;
     font-family: 'Roboto', sans-serif;
-}
-
-.textField label {
+  }
+  
+  .textField label {
     color: #aaa;
     font-family: 'Roboto', sans-serif;
-}
-
-.button {
+  }
+  
+  .button {
     margin-top: 1em;
     background: #4285f4 !important;
     color: #fff !important;
     transition: background 0.3s ease;
     font-family: 'Roboto', sans-serif;
     border-radius: 0.5em;
-}
-
-.button:hover {
+  }
+  
+  .button:hover {
     background: #357ae8 !important;
-}
-
-.alert {
+  }
+  
+  .alert {
     margin-top: 1em;
     transition: opacity 0.3s ease;
     font-family: 'Roboto', sans-serif;
     border-radius: 0.5em;
-}
-
-.errorAlert {
+  }
+  
+  .errorAlert {
     background: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
-}
-
-.successAlert {
+  }
+  
+  .successAlert {
     background: #d4edda;
-    padding-top: "1em";
+    color: #155724;
     border: 1px solid #c3e6cb;
-}
+  }
+  
